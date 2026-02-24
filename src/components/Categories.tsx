@@ -13,7 +13,7 @@ const categories = [
   {
     name: "Sunglasses",
     description: "Shield your eyes in style with UV protection",
-    image: "https://images.unsplash.com/photo-1525930660428-9fca04496138?w=500&q=80&fit=crop",
+    image: "https://images.unsplash.com/photo-1513908512605-c58d3f08079f?w=500&q=80&fit=crop",
     count: "150+ styles",
   },
   {

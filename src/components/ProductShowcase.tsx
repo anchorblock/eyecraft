@@ -80,7 +80,7 @@ const products = [
     name: "Trail Runner Pro",
     price: "৳4,200",
     originalPrice: null,
-    image: "https://images.unsplash.com/photo-1661152930456-e4ec63f8b558?w=600&q=80&fit=crop",
+    image: "https://images.unsplash.com/photo-1691141573071-e71dc8ec2876?w=600&q=80&fit=crop",
     tag: "New",
     category: "Sport Eyewear",
   },

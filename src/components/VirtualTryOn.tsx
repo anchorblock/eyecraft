@@ -1,7 +1,320 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
+
+function FaceScanAnimation() {
+  const landmarkDots = [
+    { x: 88, y: 80, delay: 0 },     // left brow outer
+    { x: 108, y: 74, delay: 0.1 },   // left brow mid
+    { x: 130, y: 72, delay: 0.15 },  // left brow inner
+    { x: 170, y: 72, delay: 0.2 },   // right brow inner
+    { x: 192, y: 74, delay: 0.25 },  // right brow mid
+    { x: 212, y: 80, delay: 0.3 },   // right brow outer
+    { x: 100, y: 100, delay: 0.4 },  // left eye outer
+    { x: 120, y: 96, delay: 0.45 },  // left eye center
+    { x: 140, y: 100, delay: 0.5 },  // left eye inner
+    { x: 160, y: 100, delay: 0.55 }, // right eye inner
+    { x: 180, y: 96, delay: 0.6 },   // right eye center
+    { x: 200, y: 100, delay: 0.65 }, // right eye outer
+    { x: 150, y: 115, delay: 0.75 }, // nose bridge
+    { x: 150, y: 140, delay: 0.85 }, // nose tip
+    { x: 138, y: 145, delay: 0.9 },  // left nostril
+    { x: 162, y: 145, delay: 0.95 }, // right nostril
+    { x: 125, y: 168, delay: 1.1 },  // left mouth
+    { x: 150, y: 172, delay: 1.15 }, // mouth center
+    { x: 175, y: 168, delay: 1.2 },  // right mouth
+    { x: 150, y: 182, delay: 1.3 },  // lower lip
+    { x: 150, y: 210, delay: 1.4 },  // chin
+    { x: 80, y: 130, delay: 1.0 },   // left jaw
+    { x: 220, y: 130, delay: 1.05 }, // right jaw
+  ];
+
+  return (
+    <div className="relative w-full aspect-[4/5] max-w-lg mx-auto rounded-2xl overflow-hidden bg-gradient-to-br from-surface via-primary to-surface border border-white/[0.06]">
+      {/* Background grid */}
+      <div
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(201,169,110,1) 1px, transparent 1px), linear-gradient(90deg, rgba(201,169,110,1) 1px, transparent 1px)",
+          backgroundSize: "24px 24px",
+        }}
+      />
+
+      {/* Radial glow behind face */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,169,110,0.08),transparent_65%)]" />
+
+      {/* Main SVG canvas */}
+      <svg viewBox="0 0 300 380" className="absolute inset-0 w-full h-full">
+        {/* Face oval outline - dashed, pulsing */}
+        <motion.ellipse
+          cx="150" cy="145" rx="78" ry="100"
+          fill="none"
+          stroke="rgba(201,169,110,0.2)"
+          strokeWidth="1"
+          strokeDasharray="8 5"
+          animate={{ opacity: [0.15, 0.35, 0.15] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+        />
+
+        {/* Inner face contour */}
+        <motion.ellipse
+          cx="150" cy="145" rx="65" ry="85"
+          fill="none"
+          stroke="rgba(201,169,110,0.1)"
+          strokeWidth="0.8"
+          strokeDasharray="4 6"
+          animate={{ opacity: [0.1, 0.25, 0.1] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+        />
+
+        {/* Horizontal scanning beam */}
+        <motion.line
+          x1="50" x2="250"
+          stroke="rgba(201,169,110,0.5)"
+          strokeWidth="1"
+          animate={{ y1: [50, 260, 50], y2: [50, 260, 50] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        />
+        {/* Beam glow */}
+        <motion.rect
+          x="50" width="200" height="30"
+          fill="url(#scanGlow)"
+          animate={{ y: [40, 250, 40] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        />
+
+        {/* Gradient defs */}
+        <defs>
+          <linearGradient id="scanGlow" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="rgba(201,169,110,0.08)" />
+            <stop offset="100%" stopColor="rgba(201,169,110,0)" />
+          </linearGradient>
+          <linearGradient id="glassGradient" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="rgba(201,169,110,0.15)" />
+            <stop offset="50%" stopColor="rgba(201,169,110,0.05)" />
+            <stop offset="100%" stopColor="rgba(201,169,110,0.15)" />
+          </linearGradient>
+        </defs>
+
+        {/* Eye region boxes */}
+        <motion.rect
+          x="88" y="85" width="55" height="30" rx="5"
+          fill="none" stroke="rgba(201,169,110,0.15)" strokeWidth="0.8"
+          strokeDasharray="3 3"
+          animate={{ opacity: [0, 0.4, 0.4, 0] }}
+          transition={{ duration: 5, repeat: Infinity, delay: 1 }}
+        />
+        <motion.rect
+          x="157" y="85" width="55" height="30" rx="5"
+          fill="none" stroke="rgba(201,169,110,0.15)" strokeWidth="0.8"
+          strokeDasharray="3 3"
+          animate={{ opacity: [0, 0.4, 0.4, 0] }}
+          transition={{ duration: 5, repeat: Infinity, delay: 1 }}
+        />
+
+        {/* ===== GLASSES ANIMATION ===== */}
+        <motion.g
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: [0, 0, 1, 1, 1, 0], y: [-20, -20, 0, 0, 0, 0] }}
+          transition={{ duration: 6, repeat: Infinity, times: [0, 0.3, 0.4, 0.7, 0.85, 1] }}
+        >
+          {/* Left lens */}
+          <rect
+            x="85" y="86" width="58" height="32" rx="8"
+            fill="url(#glassGradient)" stroke="rgba(201,169,110,0.6)" strokeWidth="1.5"
+          />
+          {/* Right lens */}
+          <rect
+            x="157" y="86" width="58" height="32" rx="8"
+            fill="url(#glassGradient)" stroke="rgba(201,169,110,0.6)" strokeWidth="1.5"
+          />
+          {/* Bridge */}
+          <path
+            d="M143 100 Q150 94 157 100"
+            fill="none" stroke="rgba(201,169,110,0.6)" strokeWidth="1.5"
+          />
+          {/* Left temple */}
+          <line
+            x1="85" y1="96" x2="65" y2="93"
+            stroke="rgba(201,169,110,0.4)" strokeWidth="1.2"
+          />
+          {/* Right temple */}
+          <line
+            x1="215" y1="96" x2="235" y2="93"
+            stroke="rgba(201,169,110,0.4)" strokeWidth="1.2"
+          />
+          {/* Lens shine */}
+          <motion.line
+            x1="95" y1="92" x2="105" y2="112"
+            stroke="rgba(255,255,255,0.15)" strokeWidth="2" strokeLinecap="round"
+            animate={{ opacity: [0, 0.3, 0] }}
+            transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+          />
+          <motion.line
+            x1="167" y1="92" x2="177" y2="112"
+            stroke="rgba(255,255,255,0.15)" strokeWidth="2" strokeLinecap="round"
+            animate={{ opacity: [0, 0.3, 0] }}
+            transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+          />
+        </motion.g>
+
+        {/* IPD measurement line */}
+        <motion.g
+          animate={{ opacity: [0, 0, 0.6, 0.6, 0] }}
+          transition={{ duration: 5, repeat: Infinity, times: [0, 0.15, 0.25, 0.6, 0.7] }}
+        >
+          <line
+            x1="120" y1="100" x2="180" y2="100"
+            stroke="rgba(201,169,110,0.4)" strokeWidth="0.8"
+            strokeDasharray="2 2"
+          />
+          <circle cx="120" cy="100" r="2" fill="rgba(201,169,110,0.5)" />
+          <circle cx="180" cy="100" r="2" fill="rgba(201,169,110,0.5)" />
+          <text
+            x="150" y="94" textAnchor="middle"
+            fill="rgba(201,169,110,0.5)" fontSize="7" fontFamily="monospace"
+            letterSpacing="1"
+          >
+            IPD 63mm
+          </text>
+        </motion.g>
+
+        {/* Frame width measurement */}
+        <motion.g
+          animate={{ opacity: [0, 0, 0.5, 0.5, 0] }}
+          transition={{ duration: 5, repeat: Infinity, delay: 0.5, times: [0, 0.2, 0.3, 0.65, 0.75] }}
+        >
+          <line
+            x1="80" y1="125" x2="220" y2="125"
+            stroke="rgba(201,169,110,0.25)" strokeWidth="0.6"
+            strokeDasharray="3 3"
+          />
+          <line x1="80" y1="121" x2="80" y2="129" stroke="rgba(201,169,110,0.3)" strokeWidth="0.6" />
+          <line x1="220" y1="121" x2="220" y2="129" stroke="rgba(201,169,110,0.3)" strokeWidth="0.6" />
+          <text
+            x="150" y="135" textAnchor="middle"
+            fill="rgba(201,169,110,0.4)" fontSize="6.5" fontFamily="monospace"
+            letterSpacing="1"
+          >
+            FRAME 138mm
+          </text>
+        </motion.g>
+
+        {/* Landmark dots */}
+        {landmarkDots.map((dot, i) => (
+          <motion.circle
+            key={i}
+            cx={dot.x} cy={dot.y} r="2"
+            fill="rgba(201,169,110,0.7)"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{
+              opacity: [0, 0.8, 0.8, 0],
+              scale: [0, 1, 1, 0],
+            }}
+            transition={{
+              duration: 3.5,
+              repeat: Infinity,
+              delay: dot.delay,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
+
+        {/* Connecting lines between landmarks (face mesh effect) */}
+        <motion.g
+          animate={{ opacity: [0, 0.15, 0.15, 0] }}
+          transition={{ duration: 4, repeat: Infinity, delay: 0.8 }}
+        >
+          {/* Brow line */}
+          <polyline
+            points="88,80 108,74 130,72 170,72 192,74 212,80"
+            fill="none" stroke="rgba(201,169,110,0.3)" strokeWidth="0.5"
+          />
+          {/* Left eye */}
+          <polyline
+            points="100,100 120,96 140,100"
+            fill="none" stroke="rgba(201,169,110,0.25)" strokeWidth="0.5"
+          />
+          {/* Right eye */}
+          <polyline
+            points="160,100 180,96 200,100"
+            fill="none" stroke="rgba(201,169,110,0.25)" strokeWidth="0.5"
+          />
+          {/* Nose */}
+          <polyline
+            points="150,115 150,140 138,145"
+            fill="none" stroke="rgba(201,169,110,0.2)" strokeWidth="0.5"
+          />
+          <polyline
+            points="150,140 162,145"
+            fill="none" stroke="rgba(201,169,110,0.2)" strokeWidth="0.5"
+          />
+          {/* Mouth */}
+          <polyline
+            points="125,168 150,172 175,168"
+            fill="none" stroke="rgba(201,169,110,0.2)" strokeWidth="0.5"
+          />
+          {/* Jaw outline */}
+          <polyline
+            points="88,80 80,130 100,180 150,210 200,180 220,130 212,80"
+            fill="none" stroke="rgba(201,169,110,0.12)" strokeWidth="0.5"
+          />
+        </motion.g>
+      </svg>
+
+      {/* Corner brackets - animated */}
+      {[
+        "top-4 left-4 border-l-2 border-t-2",
+        "top-4 right-4 border-r-2 border-t-2",
+        "bottom-14 left-4 border-l-2 border-b-2",
+        "bottom-14 right-4 border-r-2 border-b-2",
+      ].map((pos, i) => (
+        <motion.div
+          key={i}
+          className={`absolute w-6 h-6 ${pos} border-accent/50`}
+          animate={{ opacity: [0.3, 0.7, 0.3] }}
+          transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.4 }}
+        />
+      ))}
+
+      {/* Bottom HUD bar */}
+      <div className="absolute bottom-0 left-0 right-0 bg-black/60 backdrop-blur-xl px-5 py-3">
+        <div className="flex items-center justify-between mb-2">
+          <div className="flex items-center gap-2">
+            <motion.div
+              className="w-2 h-2 rounded-full bg-emerald-400"
+              animate={{ opacity: [1, 0.3, 1] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            />
+            <span className="text-[10px] text-white/50 tracking-[0.15em] font-mono">
+              SCANNING FACE
+            </span>
+          </div>
+          <div className="flex items-center gap-3">
+            <motion.span
+              className="text-[10px] text-accent/60 tracking-[0.15em] font-mono"
+              animate={{ opacity: [0.4, 0.8, 0.4] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              ANALYZING
+            </motion.span>
+            <span className="text-[10px] text-accent tracking-[0.15em] font-mono font-medium">
+              AI MATCH
+            </span>
+          </div>
+        </div>
+        <div className="h-[2px] bg-white/10 rounded-full overflow-hidden">
+          <motion.div
+            className="h-full bg-gradient-to-r from-accent/50 via-accent to-accent/50 rounded-full"
+            animate={{ width: ["0%", "100%"] }}
+            transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function VirtualTryOn() {
   return (
@@ -11,7 +324,7 @@ export default function VirtualTryOn() {
 
       <div className="max-w-7xl mx-auto relative">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Visual - Male model image */}
+          {/* Visual — Pure animation, no image */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -19,185 +332,7 @@ export default function VirtualTryOn() {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <div className="relative aspect-[4/5] max-w-lg mx-auto rounded-xl overflow-hidden">
-              <Image
-                src="https://images.unsplash.com/photo-1755519024540-2b4844df5d92?w=800&q=80&fit=crop"
-                alt="Man showcasing virtual try-on experience with eyeglasses"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-              {/* === Rich Face Scanning Overlay === */}
-              <div className="absolute inset-0 overflow-hidden">
-                {/* Subtle grid overlay */}
-                <div
-                  className="absolute inset-0 opacity-[0.04]"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(rgba(201,169,110,1) 1px, transparent 1px), linear-gradient(90deg, rgba(201,169,110,1) 1px, transparent 1px)",
-                    backgroundSize: "40px 40px",
-                  }}
-                />
-
-                {/* Scanning beam with glow */}
-                <motion.div
-                  className="absolute left-0 right-0 h-[1px]"
-                  animate={{ top: ["15%", "65%", "15%"] }}
-                  transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  <div className="h-[1px] bg-gradient-to-r from-transparent via-accent to-transparent" />
-                  <div className="h-8 -mt-4 bg-gradient-to-b from-accent/15 to-transparent" />
-                </motion.div>
-
-                {/* Face outline SVG */}
-                <motion.svg
-                  viewBox="0 0 200 260"
-                  className="absolute top-[12%] left-1/2 -translate-x-1/2 w-[55%] h-auto"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: [0.3, 0.6, 0.3], scale: [0.98, 1, 0.98] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  {/* Face oval */}
-                  <ellipse
-                    cx="100" cy="120" rx="72" ry="95"
-                    fill="none" stroke="rgba(201,169,110,0.3)" strokeWidth="1.2"
-                    strokeDasharray="6 4"
-                  />
-                  {/* Glasses bridge line */}
-                  <motion.path
-                    d="M62 105 Q100 95 138 105"
-                    fill="none" stroke="rgba(201,169,110,0.5)" strokeWidth="1"
-                    initial={{ pathLength: 0 }}
-                    animate={{ pathLength: [0, 1, 1, 0] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  />
-                  {/* Left lens outline */}
-                  <motion.rect
-                    x="42" y="92" width="48" height="32" rx="6"
-                    fill="none" stroke="rgba(201,169,110,0.4)" strokeWidth="1"
-                    initial={{ pathLength: 0 }}
-                    animate={{ pathLength: [0, 1, 1, 0] }}
-                    transition={{ duration: 4, repeat: Infinity, delay: 0.3 }}
-                  />
-                  {/* Right lens outline */}
-                  <motion.rect
-                    x="110" y="92" width="48" height="32" rx="6"
-                    fill="none" stroke="rgba(201,169,110,0.4)" strokeWidth="1"
-                    initial={{ pathLength: 0 }}
-                    animate={{ pathLength: [0, 1, 1, 0] }}
-                    transition={{ duration: 4, repeat: Infinity, delay: 0.3 }}
-                  />
-                </motion.svg>
-
-                {/* Facial landmark dots */}
-                {[
-                  { x: "35%", y: "36%", delay: 0 },    // left eye
-                  { x: "65%", y: "36%", delay: 0.15 },  // right eye
-                  { x: "50%", y: "48%", delay: 0.3 },   // nose bridge
-                  { x: "50%", y: "55%", delay: 0.45 },  // nose tip
-                  { x: "40%", y: "64%", delay: 0.6 },   // left mouth
-                  { x: "60%", y: "64%", delay: 0.75 },  // right mouth
-                  { x: "28%", y: "50%", delay: 0.9 },   // left cheek
-                  { x: "72%", y: "50%", delay: 1.05 },  // right cheek
-                  { x: "32%", y: "28%", delay: 1.2 },   // left brow
-                  { x: "68%", y: "28%", delay: 1.35 },  // right brow
-                  { x: "50%", y: "72%", delay: 1.5 },   // chin
-                ].map((dot, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute w-1.5 h-1.5 rounded-full bg-accent"
-                    style={{ left: dot.x, top: dot.y }}
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{
-                      opacity: [0, 1, 1, 0],
-                      scale: [0, 1.2, 1, 0],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      delay: dot.delay,
-                      ease: "easeInOut",
-                    }}
-                  >
-                    {/* Pulse ring */}
-                    <motion.div
-                      className="absolute inset-0 rounded-full border border-accent/40"
-                      animate={{ scale: [1, 2.5], opacity: [0.6, 0] }}
-                      transition={{
-                        duration: 1.5,
-                        repeat: Infinity,
-                        delay: dot.delay + 0.5,
-                      }}
-                    />
-                  </motion.div>
-                ))}
-
-                {/* Measurement lines between eyes */}
-                <motion.div
-                  className="absolute top-[36%] left-[36%] right-[36%] h-[1px] bg-accent/30"
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: [0, 1, 1, 0], opacity: [0, 0.5, 0.5, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, delay: 0.5 }}
-                >
-                  <span className="absolute -top-4 left-1/2 -translate-x-1/2 text-[8px] text-accent/60 tracking-widest whitespace-nowrap">
-                    IPD: 63mm
-                  </span>
-                </motion.div>
-
-                {/* Side measurement (temple width) */}
-                <motion.div
-                  className="absolute top-[42%] left-[25%] right-[25%] h-[1px] border-t border-dashed border-accent/20"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: [0, 0.4, 0.4, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, delay: 1 }}
-                >
-                  <span className="absolute -bottom-4 left-1/2 -translate-x-1/2 text-[8px] text-accent/50 tracking-widest whitespace-nowrap">
-                    FRAME: 138mm
-                  </span>
-                </motion.div>
-              </div>
-
-              {/* Tech overlay corners — animated */}
-              {[
-                "top-3 left-3 border-l-2 border-t-2",
-                "top-3 right-3 border-r-2 border-t-2",
-                "bottom-12 left-3 border-l-2 border-b-2",
-                "bottom-12 right-3 border-r-2 border-b-2",
-              ].map((pos, i) => (
-                <motion.div
-                  key={i}
-                  className={`absolute w-6 h-6 ${pos} border-accent/60`}
-                  animate={{ opacity: [0.4, 0.8, 0.4] }}
-                  transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
-                />
-              ))}
-
-              {/* Bottom info bar — enhanced */}
-              <div className="absolute bottom-0 left-0 right-0 bg-black/70 backdrop-blur-lg px-5 py-3">
-                <div className="flex items-center justify-between mb-1.5">
-                  <div className="flex items-center gap-2">
-                    <motion.div
-                      className="w-2 h-2 rounded-full bg-emerald-400"
-                      animate={{ opacity: [1, 0.4, 1] }}
-                      transition={{ duration: 1.5, repeat: Infinity }}
-                    />
-                    <span className="text-[10px] text-white/60 tracking-widest">FACE DETECTED</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <span className="text-[10px] text-accent/70 tracking-widest">98% MATCH</span>
-                    <span className="text-[10px] text-accent tracking-widest font-medium">AI POWERED</span>
-                  </div>
-                </div>
-                {/* Progress bar */}
-                <div className="h-[2px] bg-white/10 rounded-full overflow-hidden">
-                  <motion.div
-                    className="h-full bg-gradient-to-r from-accent/60 to-accent rounded-full"
-                    animate={{ width: ["0%", "100%"] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  />
-                </div>
-              </div>
-            </div>
+            <FaceScanAnimation />
 
             {/* Decorative ring */}
             <motion.div
