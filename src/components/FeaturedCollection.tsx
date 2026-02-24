@@ -26,7 +26,7 @@ const collections = [
     title: "Luxury Edition",
     desc: "Premium materials with exquisite detailing",
     tag: "EXCLUSIVE",
-    image: "https://images.unsplash.com/photo-1727463135262-24d04e1c562d?w=800&q=80&fit=crop",
+    image: "https://images.unsplash.com/photo-1643110279326-6ff17149856a?w=800&q=80&fit=crop",
   },
 ];
 

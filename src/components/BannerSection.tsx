@@ -9,8 +9,8 @@ export default function BannerSection() {
       {/* Background Image - Male model wearing sunglasses */}
       <div className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1617690032765-70eaa584d637?w=1920&q=80&fit=crop"
-          alt="Man wearing stylish sunglasses"
+          src="https://images.unsplash.com/photo-1723179754179-61a91b48d702?w=1920&q=80&fit=crop"
+          alt="Man wearing designer sunglasses in fashion editorial"
           fill
           className="object-cover object-center"
           sizes="100vw"

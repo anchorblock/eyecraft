@@ -9,8 +9,8 @@ export default function Newsletter() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1762331211238-ac569e538e02?w=1920&q=80&fit=crop"
-          alt="Stylish sunglasses collection"
+          src="https://images.unsplash.com/photo-1497275955405-2894f1f641a8?w=1920&q=80&fit=crop"
+          alt="Child wearing eyeglasses smiling"
           fill
           className="object-cover opacity-20"
           sizes="100vw"

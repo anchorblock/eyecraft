@@ -47,7 +47,7 @@ const models = [
     tall: true,
   },
   {
-    image: "https://images.unsplash.com/photo-1617726340820-3f8419e3e384?w=600&q=80&fit=crop",
+    image: "https://images.unsplash.com/photo-1589264811639-3ca3112ba0ae?w=600&q=80&fit=crop",
     name: "Gold Wire",
     subtitle: "Minimalist luxury",
     tall: false,
@@ -90,11 +90,11 @@ export default function ModelGallery() {
             <div className="w-8 h-[1px] bg-accent" />
           </div>
           <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">
-            Worn by <span className="text-gradient">Real People</span>
+            Frames That <span className="text-gradient">Define You</span>
           </h2>
           <p className="text-white/40 max-w-lg mx-auto text-sm leading-relaxed">
-            See how our eyewear transforms everyday looks. Men, kids, and athletes
-            showcasing the EyeCraft difference.
+            Every face tells a story — discover how our eyewear elevates every look,
+            from boardrooms to playgrounds.
           </p>
         </motion.div>
 
