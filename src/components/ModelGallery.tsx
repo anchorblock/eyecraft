@@ -5,21 +5,21 @@ import Image from "next/image";
 
 const models = [
   {
-    image: "https://images.unsplash.com/photo-1737852757337-7657639bbc78?w=600&q=80&fit=crop",
-    name: "Aurelius Collection",
-    subtitle: "Gold wire frames",
+    image: "https://images.unsplash.com/photo-1752486268300-1bb7d6d9867d?w=600&q=80&fit=crop",
+    name: "Retro Square",
+    subtitle: "Bold oversized frames",
     tall: true,
   },
   {
-    image: "https://images.unsplash.com/photo-1752486268240-0507bb1ebc7e?w=600&q=80&fit=crop",
-    name: "Crystal Series",
-    subtitle: "Transparent frames",
+    image: "https://images.unsplash.com/photo-1752486268262-6ce6b339a8de?w=600&q=80&fit=crop",
+    name: "Blue Square Frame",
+    subtitle: "Smart everyday wear",
     tall: false,
   },
   {
-    image: "https://images.unsplash.com/photo-1755519024831-6833a37098ad?w=600&q=80&fit=crop",
-    name: "Noir Cat Eye",
-    subtitle: "Dramatic silhouettes",
+    image: "https://images.unsplash.com/photo-1755519024827-fd05075a7200?w=600&q=80&fit=crop",
+    name: "Classic Rectangle",
+    subtitle: "Sharp & refined",
     tall: false,
   },
   {
@@ -29,28 +29,40 @@ const models = [
     tall: true,
   },
   {
-    image: "https://images.unsplash.com/photo-1750390200298-3d5f30f670a1?w=600&q=80&fit=crop",
-    name: "Safari Leopard",
-    subtitle: "Bold patterns",
+    image: "https://images.unsplash.com/photo-1609360071320-e33f1ceae03a?w=600&q=80&fit=crop",
+    name: "Noir Round",
+    subtitle: "Vintage sophistication",
     tall: false,
   },
   {
-    image: "https://images.unsplash.com/photo-1760433403526-47f671997ca1?w=600&q=80&fit=crop",
-    name: "Titanium Edge",
-    subtitle: "Lightweight precision",
+    image: "https://images.unsplash.com/photo-1630827223910-8ccfd64aca23?w=600&q=80&fit=crop",
+    name: "Junior Cool",
+    subtitle: "Kids collection",
     tall: false,
   },
   {
-    image: "https://images.unsplash.com/photo-1597606475458-0c7c8c10e777?w=600&q=80&fit=crop",
-    name: "Retro Round",
-    subtitle: "Vintage inspired",
+    image: "https://images.unsplash.com/photo-1760630662720-992b32425b85?w=600&q=80&fit=crop",
+    name: "Sport Aero",
+    subtitle: "Performance cycling",
     tall: true,
   },
   {
-    image: "https://images.unsplash.com/photo-1750390200293-92d5a788d3a2?w=600&q=80&fit=crop",
-    name: "Minimal Square",
-    subtitle: "Clean aesthetics",
+    image: "https://images.unsplash.com/photo-1617726340820-3f8419e3e384?w=600&q=80&fit=crop",
+    name: "Gold Wire",
+    subtitle: "Minimalist luxury",
     tall: false,
+  },
+  {
+    image: "https://images.unsplash.com/photo-1574132190990-cfd62178bb1c?w=600&q=80&fit=crop",
+    name: "Little Scholar",
+    subtitle: "Kids classics",
+    tall: false,
+  },
+  {
+    image: "https://images.unsplash.com/photo-1640276349458-04c63be0610e?w=600&q=80&fit=crop",
+    name: "Trail Runner",
+    subtitle: "Sport performance",
+    tall: true,
   },
 ];
 
@@ -81,7 +93,7 @@ export default function ModelGallery() {
             Worn by <span className="text-gradient">Real People</span>
           </h2>
           <p className="text-white/40 max-w-lg mx-auto text-sm leading-relaxed">
-            See how our eyewear transforms everyday looks. Real customers and models
+            See how our eyewear transforms everyday looks. Men, kids, and athletes
             showcasing the EyeCraft difference.
           </p>
         </motion.div>

@@ -6,11 +6,11 @@ import Image from "next/image";
 export default function BannerSection() {
   return (
     <section className="relative h-[60vh] md:h-[70vh] overflow-hidden">
-      {/* Background Image */}
+      {/* Background Image - Male model wearing sunglasses */}
       <div className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1583331553158-ce47b79a5ade?w=1920&q=80&fit=crop"
-          alt="Person wearing stylish sunglasses"
+          src="https://images.unsplash.com/photo-1617690032765-70eaa584d637?w=1920&q=80&fit=crop"
+          alt="Man wearing stylish sunglasses"
           fill
           className="object-cover object-center"
           sizes="100vw"

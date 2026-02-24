@@ -17,10 +17,10 @@ const categories = [
     count: "150+ styles",
   },
   {
-    name: "Contact Lenses",
-    description: "Crystal clear vision without the frames",
-    image: "https://images.unsplash.com/photo-1769414761120-a186e3bad614?w=500&q=80&fit=crop",
-    count: "30+ brands",
+    name: "Sport Eyewear",
+    description: "High-performance frames for active lifestyles",
+    image: "https://images.unsplash.com/photo-1615161623825-2041f8436482?w=500&q=80&fit=crop",
+    count: "90+ styles",
   },
   {
     name: "Computer Glasses",

@@ -11,7 +11,7 @@ export default function VirtualTryOn() {
 
       <div className="max-w-7xl mx-auto relative">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Visual - Real Image */}
+          {/* Visual - Male model image */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -21,8 +21,8 @@ export default function VirtualTryOn() {
           >
             <div className="relative aspect-[4/5] max-w-lg mx-auto rounded-xl overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1764627511384-cb7900f27d8d?w=800&q=80&fit=crop"
-                alt="Model showcasing virtual try-on experience"
+                src="https://images.unsplash.com/photo-1755519024540-2b4844df5d92?w=800&q=80&fit=crop"
+                alt="Man showcasing virtual try-on experience with eyeglasses"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"

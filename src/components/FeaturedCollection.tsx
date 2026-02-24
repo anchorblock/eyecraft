@@ -20,7 +20,7 @@ const collections = [
     title: "Sport Performance",
     desc: "Lightweight frames built for active lifestyles",
     tag: "TRENDING",
-    image: "https://images.unsplash.com/photo-1583852701537-7e823e2f02c1?w=800&q=80&fit=crop",
+    image: "https://images.unsplash.com/photo-1552434220-a95c95de26f1?w=800&q=80&fit=crop",
   },
   {
     title: "Luxury Edition",

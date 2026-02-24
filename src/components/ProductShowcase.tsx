@@ -68,6 +68,22 @@ const products = [
     tag: "Trending",
     category: "Eyeglasses",
   },
+  {
+    name: "Aero Sport Shield",
+    price: "৳5,800",
+    originalPrice: "৳7,000",
+    image: "https://images.unsplash.com/photo-1605050824920-0c7f4e04d111?w=600&q=80&fit=crop",
+    tag: "Sport",
+    category: "Sport Eyewear",
+  },
+  {
+    name: "Trail Runner Pro",
+    price: "৳4,200",
+    originalPrice: null,
+    image: "https://images.unsplash.com/photo-1605050824853-7fb0755face3?w=600&q=80&fit=crop",
+    tag: "New",
+    category: "Sport Eyewear",
+  },
 ];
 
 export default function ProductShowcase() {
@@ -101,7 +117,7 @@ export default function ProductShowcase() {
         </motion.div>
 
         {/* Product Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6">
           {products.map((product, i) => (
             <motion.div
               key={product.name}
@@ -118,7 +134,7 @@ export default function ProductShowcase() {
                   alt={product.name}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
                 />
                 {/* Hover overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -126,7 +142,11 @@ export default function ProductShowcase() {
                 {/* Tag */}
                 {product.tag && (
                   <div className="absolute top-3 left-3">
-                    <span className="px-3 py-1 text-[10px] font-bold tracking-widest uppercase bg-accent text-primary rounded-sm">
+                    <span className={`px-3 py-1 text-[10px] font-bold tracking-widest uppercase rounded-sm ${
+                      product.tag === "Sport"
+                        ? "bg-emerald-500 text-white"
+                        : "bg-accent text-primary"
+                    }`}>
                       {product.tag}
                     </span>
                   </div>
