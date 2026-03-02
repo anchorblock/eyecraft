@@ -1,97 +1,27 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import { useState, useRef, useEffect, useCallback } from "react";
+import { motion } from "framer-motion";
+import { useRef } from "react";
 
-const heroVideos = [
-  "https://jaqmueav36qxuzcg.public.blob.vercel-storage.com/videos/eyecraftvid1.mp4",
-  "https://jaqmueav36qxuzcg.public.blob.vercel-storage.com/videos/eyecraftvid2.mp4",
-  "https://jaqmueav36qxuzcg.public.blob.vercel-storage.com/videos/eyecraft4.mp4",
-];
+const heroVideo =
+  "https://jaqmueav36qxuzcg.public.blob.vercel-storage.com/videos/fashion-vid.mp4";
 
 export default function Hero() {
-  const [currentVideo, setCurrentVideo] = useState(0);
-  const [nextVideo, setNextVideo] = useState<number | null>(null);
-  const activeRef = useRef<HTMLVideoElement>(null);
-  const incomingRef = useRef<HTMLVideoElement>(null);
-
-  const advanceVideo = useCallback(() => {
-    const next = (currentVideo + 1) % heroVideos.length;
-    setNextVideo(next);
-    // Start the crossfade, then after transition, promote next to current
-    setTimeout(() => {
-      setCurrentVideo(next);
-      setNextVideo(null);
-    }, 1500);
-  }, [currentVideo]);
-
-  useEffect(() => {
-    const video = activeRef.current;
-    if (!video) return;
-
-    const handleTimeUpdate = () => {
-      // Start crossfade 1.5s before the video ends
-      if (video.duration && video.currentTime >= video.duration - 1.5) {
-        video.removeEventListener("timeupdate", handleTimeUpdate);
-        advanceVideo();
-      }
-    };
-
-    const handleEnded = () => {
-      advanceVideo();
-    };
-
-    video.addEventListener("timeupdate", handleTimeUpdate);
-    video.addEventListener("ended", handleEnded);
-
-    return () => {
-      video.removeEventListener("timeupdate", handleTimeUpdate);
-      video.removeEventListener("ended", handleEnded);
-    };
-  }, [currentVideo, advanceVideo]);
-
-  // Auto-play incoming video when it appears
-  useEffect(() => {
-    if (nextVideo !== null && incomingRef.current) {
-      incomingRef.current.play().catch(() => {});
-    }
-  }, [nextVideo]);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Video Background Layer */}
       <div className="absolute inset-0">
-        {/* Current (active) video */}
-        <AnimatePresence>
-          <motion.video
-            key={`video-${currentVideo}`}
-            ref={activeRef}
-            src={heroVideos[currentVideo]}
-            autoPlay
-            muted
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover"
-            initial={{ opacity: 1 }}
-            animate={{ opacity: nextVideo !== null ? 0 : 1 }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
-          />
-        </AnimatePresence>
-
-        {/* Incoming (next) video — fades in on top */}
-        {nextVideo !== null && (
-          <motion.video
-            key={`video-next-${nextVideo}`}
-            ref={incomingRef}
-            src={heroVideos[nextVideo]}
-            autoPlay
-            muted
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
-          />
-        )}
+        <video
+          ref={videoRef}
+          src={heroVideo}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        />
 
         {/* Cinematic gradient overlays */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/30" />
@@ -211,20 +141,6 @@ export default function Hero() {
             </motion.div>
           ))}
         </motion.div>
-      </div>
-
-      {/* Video progress indicators */}
-      <div className="absolute bottom-24 left-1/2 -translate-x-1/2 flex gap-2 z-20">
-        {heroVideos.map((_, i) => (
-          <div
-            key={i}
-            className={`h-[2px] rounded-full transition-all duration-700 ${
-              i === currentVideo
-                ? "w-8 bg-accent"
-                : "w-4 bg-white/20"
-            }`}
-          />
-        ))}
       </div>
 
       {/* Scroll indicator */}
