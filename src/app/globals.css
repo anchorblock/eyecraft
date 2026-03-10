@@ -115,6 +115,15 @@ html {
   background-size: 128px 128px;
 }
 
+/* Hide scrollbar for horizontal scroll sections */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* Selection color */
 ::selection {
   background: rgba(201, 169, 110, 0.3);

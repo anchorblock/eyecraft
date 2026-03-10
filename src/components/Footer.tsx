@@ -6,9 +6,7 @@ const footerLinks = {
   Shop: [
     { name: "Eyeglasses", href: "#" },
     { name: "Sunglasses", href: "#" },
-    { name: "Contact Lenses", href: "#" },
-    { name: "Computer Glasses", href: "#" },
-    { name: "Kids Eyewear", href: "#" },
+    { name: "Sportsglasses", href: "#" },
   ],
   Company: [
     { name: "About Us", href: "#" },
