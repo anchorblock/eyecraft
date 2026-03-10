@@ -7,23 +7,23 @@ import { useState } from "react";
 const videos = [
   {
     title: "The Art of Eyewear Crafting",
-    thumbnail: "https://images.unsplash.com/photo-1764740130608-c3cf7214ebfc?w=800&q=80&fit=crop",
+    thumbnail: `https://img.youtube.com/vi/qFLCx8naQqE/maxresdefault.jpg`,
     duration: "2:34",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    videoUrl: "https://www.youtube.com/embed/qFLCx8naQqE",
     type: "main",
   },
   {
     title: "2026 Spring Collection",
-    thumbnail: "https://images.unsplash.com/photo-1725845558921-f01f3db253e3?w=600&q=80&fit=crop",
+    thumbnail: `https://img.youtube.com/vi/tH-JxECXPpg/maxresdefault.jpg`,
     duration: "1:45",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    videoUrl: "https://www.youtube.com/embed/tH-JxECXPpg",
     type: "secondary",
   },
   {
     title: "Behind the Lens",
-    thumbnail: "https://images.unsplash.com/photo-1766998162306-028b1ded919d?w=600&q=80&fit=crop",
+    thumbnail: `https://img.youtube.com/vi/TYPSt9NLX34/maxresdefault.jpg`,
     duration: "3:12",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    videoUrl: "https://www.youtube.com/embed/TYPSt9NLX34",
     type: "secondary",
   },
 ];
