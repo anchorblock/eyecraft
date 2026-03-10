@@ -15,6 +15,22 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "img.youtube.com",
       },
+      {
+        protocol: "https",
+        hostname: "static5.lenskart.com",
+      },
+      {
+        protocol: "https",
+        hostname: "ds-static.lenskart.com",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn.prosystem.com.bd",
+      },
+      {
+        protocol: "https",
+        hostname: "dukpion.com.bd",
+      },
     ],
   },
 };

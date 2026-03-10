@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { CartProvider } from "@/lib/cart-context";
+import CartDrawer from "@/components/CartDrawer";
 
 export const metadata: Metadata = {
   title: "EyeCraft - Premium Eyewear for Every Vision",
@@ -27,7 +29,10 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-primary text-white font-body antialiased">
-        {children}
+        <CartProvider>
+          {children}
+          <CartDrawer />
+        </CartProvider>
       </body>
     </html>
   );
