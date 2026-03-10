@@ -2,34 +2,52 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { useRef } from "react";
 
 const categories = [
   {
     name: "Eyeglasses",
+    slug: "eyeglasses",
     description: "Precision-crafted frames for everyday clarity",
     image:
       "https://images.unsplash.com/photo-1741031874640-578deef86df3?w=1400&q=80&fit=crop",
     count: "200+ styles",
-    tags: ["Kids", "Male", "Female", "Unisex"],
+    tags: [
+      { label: "Kids", slug: "kids" },
+      { label: "Male", slug: "male" },
+      { label: "Female", slug: "female" },
+      { label: "Unisex", slug: "unisex" },
+    ],
     align: "left" as const,
   },
   {
     name: "Sunglasses",
+    slug: "sunglasses",
     description: "Shield your eyes in style with UV protection",
     image:
       "https://images.unsplash.com/photo-1582584658349-4a39bbe5acfe?w=1400&q=80&fit=crop",
     count: "150+ styles",
-    tags: ["Kids", "Male", "Female", "Unisex"],
+    tags: [
+      { label: "Kids", slug: "kids" },
+      { label: "Male", slug: "male" },
+      { label: "Female", slug: "female" },
+      { label: "Unisex", slug: "unisex" },
+    ],
     align: "right" as const,
   },
   {
     name: "Sport Eyewear",
+    slug: "sport-eyewear",
     description: "High-performance frames for active lifestyles",
     image:
       "https://images.unsplash.com/photo-1513908512605-c58d3f08079f?w=1400&q=80&fit=crop",
     count: "90+ styles",
-    tags: ["Biking", "Mountaineering", "Swimming"],
+    tags: [
+      { label: "Biking", slug: "biking" },
+      { label: "Mountaineering", slug: "mountaineering" },
+      { label: "Swimming", slug: "swimming" },
+    ],
     align: "left" as const,
   },
 ];
@@ -171,16 +189,20 @@ function CategoryCard({
             }`}
           >
             {cat.tags.map((tag, i) => (
-              <motion.span
-                key={tag}
+              <motion.div
+                key={tag.slug}
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.4 + i * 0.08 }}
-                className="px-4 py-2 text-xs tracking-wider uppercase bg-white/10 backdrop-blur-md border border-white/15 rounded-full text-white/80 hover:bg-accent/20 hover:border-accent/40 hover:text-accent transition-all duration-300 cursor-pointer"
               >
-                {tag}
-              </motion.span>
+                <Link
+                  href={`/products/${cat.slug}/${tag.slug}`}
+                  className="px-4 py-2 text-xs tracking-wider uppercase bg-white/10 backdrop-blur-md border border-white/15 rounded-full text-white/80 hover:bg-accent/20 hover:border-accent/40 hover:text-accent transition-all duration-300 inline-block"
+                >
+                  {tag.label}
+                </Link>
+              </motion.div>
             ))}
           </div>
 
