@@ -12,66 +12,71 @@
 - Browse by frame shape section with SVG icons
 - Images sourced from Unsplash (product-only, no female models)
 
-## Phase 3: Product & Commerce Flow — IN PROGRESS
+## Phase 3: Product & Commerce Flow — DONE
 
-### 3.1 Product Data Layer (demo/static)
+### 3.1 Product Data Layer (demo/static) — DONE
 - TypeScript types: Product, CartItem, LensOption
 - 11 demo products (1 per subcategory) with images from Lenskart/Dukpion/Opsis
 - Prices in BDT (Bangladeshi Taka)
 - React Context for cart state management
 
-### 3.2 Product Listing Page (`/products/[category]/[subcategory]`)
-- Grid layout with pagination structure (1 product per subcategory for now)
-- Product cards with hover image angle cycling (3-4 angles)
-- Wishlist heart icon (top-right, outline → filled toggle)
+### 3.2 Product Listing Page (`/products/[category]/[subcategory]`) — DONE
+- Grid layout with sidebar filters and pagination structure
+- Product cards with wishlist heart icon
 - Ready for more products later
 
-### 3.3 Product Detail Page (`/products/[slug]`)
-- Image gallery: 3-4 angle thumbnails with main image, auto-rotate
-- Color swatch switching: in-page state swap (not URL change), swap image set + color name
+### 3.3 Product Detail Page (`/product/[slug]`) — DONE
+- Image gallery with crossfade animation (AnimatePresence)
+- Auto-rotate images every 4 seconds
+- Color swatch switching: in-page state swap
 - 4 lens options as radio chips with dynamic price update:
   1. Frame Only
   2. Single Vision / Unifocal
   3. Progressive / Bifocal
   4. Zero Power with Anti-Blue Lens
-- Frame specs table (material, dimensions, weight, shape)
-- Size selector
-- Add to Cart button
-- WhatsApp order button (pre-filled message with product + lens selection)
+- Frame specs table, size selector
+- Add to Cart + WhatsApp order button
 - Similar products carousel
 
-### 3.4 Cart
+### 3.4 Cart — DONE
 - Slide-out drawer cart (opens on add-to-cart)
-- Full cart page (`/cart`) with prescription details, promo code field
+- Full cart page (`/cart`) with promo code (EYECRAFT10), order summary
 - WhatsApp order option
+- Proceed to Checkout linked to `/checkout`
 
-### 3.5 Landing Page Updates
-- Tab filters on ProductShowcase (Bestsellers / New Arrivals / Trending / On Sale)
-- Wishlist hearts on product cards
-- Link product cards to PDP routes
-- Hover angle cycling on landing page product cards
+### 3.5 Navbar — DONE
+- Cart icon shows real item count, opens drawer
+- Logo links to home
+- Nav links work from any page (use `/#` prefix)
 
-### Image Sources
-- **Lenskart** (static5.lenskart.com): Best for multi-angle product images + color variant bubble images
-- **Dukpion** (dukpion.com.bd): BDT pricing reference, WhatsApp order pattern
-- **Opsis** (opsis.com.bd / cdn.prosystem.com.bd): Brand variety (RayBan, Oakley, etc.)
+## Phase 4: Checkout Flow UI/UX — DONE
+
+### 4.1 Checkout Page (`/checkout`) — DONE
+- Single-page guest checkout (no account required)
+- 3-section form: Contact Info, Delivery Address, Payment Method
+- Contact: Full name, phone, email (optional)
+- Address: Street, city dropdown (8 divisions), area, delivery zone
+- Delivery zones: Inside Dhaka (৳70) / Outside Dhaka (৳120)
+- Payment methods: COD (default), bKash, Nagad, Credit/Debit Card
+- Order summary sidebar with item thumbnails
+- Order confirmation page with order ID
+- Trust signals: 100% Secure Checkout badge
 
 ### Design Decisions
-- No quick-add on product cards (eyewear needs configuration → click through to PDP)
-- 4 lens options only, no dropdowns/sub-tiers (research: 4-7 options is sweet spot)
-- Color switching via in-page state (not separate URLs like Lenskart)
+- Dark theme kept as brand differentiator (all competitors use light mode)
+- Dark = premium/luxury positioning (Tom Ford, Gentle Monster aesthetic)
+- No dark/light toggle — no competitor does it, dilutes brand identity
+- Checkout uses dark theme consistently (trust signals added for reassurance)
+- No quick-add on product cards (eyewear needs configuration)
+- 4 lens options only (research: 4-7 options is sweet spot)
+- Color switching via in-page state (not separate URLs)
 - Both drawer cart + full cart page
 
-## Phase 4: Checkout Flow UI/UX
-- 3-step guest checkout flow
-- bKash / COD payment options
-- WhatsApp order integration
-
-## Phase 5: Virtual Try-On Planning
+## Phase 5: Virtual Try-On Planning — NOT STARTED
 - MVP with TensorFlow.js face detection
 - Camera feed with frame overlay
 
-## Phase 6: Mobile UX & Navigation
+## Phase 6: Mobile UX & Navigation — NOT STARTED
 - Bottom tab bar navigation
 - Sticky header with scroll behavior
 - Touch-friendly interactions throughout
@@ -84,3 +89,8 @@
 - Reduce model images overall — focus on the product
 - Demo data only — no backend/database for now
 - Images from Unsplash for hero/categories, from Lenskart/Dukpion/Opsis for product pages
+
+## Image Sources
+- **Lenskart** (static5.lenskart.com): Multi-angle product images + color variant bubble images
+- **Dukpion** (dukpion.com.bd): BDT pricing reference, WhatsApp order pattern
+- **Opsis** (opsis.com.bd / cdn.prosystem.com.bd): Brand variety (RayBan, Oakley, etc.)
