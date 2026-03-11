@@ -121,7 +121,7 @@ export default function CheckoutPage() {
                 className="lg:col-span-2 space-y-8"
               >
                 {/* Contact Information */}
-                <div className="bg-surface/50 border border-white/5 rounded-xl p-6">
+                <div className="bg-surface/50 border border-white/5 rounded-xl p-4 sm:p-6">
                   <h2 className="text-base font-semibold mb-5 flex items-center gap-2">
                     <span className="w-6 h-6 rounded-full bg-accent/10 text-accent text-xs flex items-center justify-center font-bold">1</span>
                     Contact Information
@@ -169,7 +169,7 @@ export default function CheckoutPage() {
                 </div>
 
                 {/* Delivery Address */}
-                <div className="bg-surface/50 border border-white/5 rounded-xl p-6">
+                <div className="bg-surface/50 border border-white/5 rounded-xl p-4 sm:p-6">
                   <h2 className="text-base font-semibold mb-5 flex items-center gap-2">
                     <span className="w-6 h-6 rounded-full bg-accent/10 text-accent text-xs flex items-center justify-center font-bold">2</span>
                     Delivery Address
@@ -237,7 +237,7 @@ export default function CheckoutPage() {
                           key={zone.id}
                           type="button"
                           onClick={() => setDeliveryZone(zone.id)}
-                          className={`flex items-center justify-between px-4 py-3 rounded-lg border transition-all ${
+                          className={`flex items-center justify-between px-3 sm:px-4 py-3 rounded-lg border transition-all text-left ${
                             deliveryZone === zone.id
                               ? "border-accent bg-accent/5"
                               : "border-white/10 hover:border-white/20"
@@ -273,7 +273,7 @@ export default function CheckoutPage() {
                 </div>
 
                 {/* Payment Method */}
-                <div className="bg-surface/50 border border-white/5 rounded-xl p-6">
+                <div className="bg-surface/50 border border-white/5 rounded-xl p-4 sm:p-6">
                   <h2 className="text-base font-semibold mb-5 flex items-center gap-2">
                     <span className="w-6 h-6 rounded-full bg-accent/10 text-accent text-xs flex items-center justify-center font-bold">3</span>
                     Payment Method
@@ -351,7 +351,7 @@ export default function CheckoutPage() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.1 }}
               >
-                <div className="sticky top-28 bg-surface/50 border border-white/5 rounded-xl p-6 space-y-5">
+                <div className="sticky top-28 bg-surface/50 border border-white/5 rounded-xl p-4 sm:p-6 space-y-5">
                   <h2 className="text-base font-semibold">
                     Order Summary ({items.length} {items.length === 1 ? "item" : "items"})
                   </h2>
