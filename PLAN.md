@@ -72,14 +72,22 @@
 - Color switching via in-page state (not separate URLs)
 - Both drawer cart + full cart page
 
-## Phase 5: Virtual Try-On Planning — NOT STARTED
-- MVP with TensorFlow.js face detection
-- Camera feed with frame overlay
+## Phase 5: Virtual Try-On — DEFERRED
+- Simple "upload photo + overlay glasses" approach (not TensorFlow.js)
+- Will implement later as a simpler MVP
 
-## Phase 6: Mobile UX & Navigation — NOT STARTED
-- Bottom tab bar navigation
-- Sticky header with scroll behavior
-- Touch-friendly interactions throughout
+## Phase 6: Mobile UX & Navigation — IN PROGRESS
+
+### 6.1 Mobile Responsiveness Audit & Fixes — DONE
+- Audited all pages at Samsung S25 dimensions (360x780) using Playwright
+- **Cart page**: Fixed promo code Apply button overflow, tighter padding/spacing, smaller quantity controls, compact item image
+- **PDP**: Price section flex-wrap for discount badge, smaller lens option text, tighter padding
+- **Checkout**: Responsive padding on all form sections (p-4 mobile, p-6 desktop)
+- **Navbar**: Added cart icon with badge to mobile header (alongside hamburger)
+- **Footer**: 2-column grid for link sections on mobile
+
+### 6.2 Bottom Tab Bar Navigation — NOT STARTED
+### 6.3 Touch-Friendly Interactions — NOT STARTED
 
 ---
 
