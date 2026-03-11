@@ -6,10 +6,10 @@ import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
 
 const navLinks = [
-  { name: "Eyeglasses", href: "#categories" },
-  { name: "Sunglasses", href: "#categories" },
-  { name: "Collections", href: "#collections" },
-  { name: "Virtual Try-On", href: "#try-on" },
+  { name: "Eyeglasses", href: "/#categories" },
+  { name: "Sunglasses", href: "/#categories" },
+  { name: "Collections", href: "/#collections" },
+  { name: "Virtual Try-On", href: "/#try-on" },
 ];
 
 export default function Navbar() {
