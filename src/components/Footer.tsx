@@ -46,10 +46,10 @@ const socials = [
 export default function Footer() {
   return (
     <footer className="bg-surface/50 border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 py-12 sm:py-16">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-12">
           {/* Brand */}
-          <div className="lg:col-span-2">
+          <div className="col-span-2 lg:col-span-2">
             <motion.a
               href="#"
               className="flex items-center gap-2 mb-6"
