@@ -187,16 +187,16 @@ export default function ProductDetailPage() {
               </div>
 
               {/* Price */}
-              <div className="flex items-baseline gap-3">
-                <span className="text-3xl font-heading font-bold text-accent">
+              <div className="flex flex-wrap items-baseline gap-2 sm:gap-3">
+                <span className="text-2xl sm:text-3xl font-heading font-bold text-accent">
                   ৳{totalPrice.toLocaleString()}
                 </span>
                 {product.originalPrice && (
                   <>
-                    <span className="text-lg text-white/30 line-through">
+                    <span className="text-base sm:text-lg text-white/30 line-through">
                       ৳{(product.originalPrice + (selectedLens?.priceAdd || 0)).toLocaleString()}
                     </span>
-                    <span className="text-xs font-semibold text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded">
+                    <span className="text-[10px] sm:text-xs font-semibold text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded">
                       {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}% OFF
                     </span>
                   </>
@@ -277,15 +277,15 @@ export default function ProductDetailPage() {
                   {product.lensOptions.map((lens) => (
                     <label
                       key={lens.id}
-                      className={`flex items-center justify-between px-4 py-3.5 rounded-lg border cursor-pointer transition-all duration-300 ${
+                      className={`flex items-center justify-between px-3 sm:px-4 py-3 sm:py-3.5 rounded-lg border cursor-pointer transition-all duration-300 gap-2 ${
                         selectedLens?.id === lens.id
                           ? "border-accent bg-accent/5"
                           : "border-white/10 hover:border-white/20"
                       }`}
                     >
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-2 sm:gap-3 min-w-0">
                         <div
-                          className={`w-4 h-4 rounded-full border-2 flex items-center justify-center transition-colors ${
+                          className={`w-4 h-4 rounded-full border-2 flex items-center justify-center transition-colors flex-shrink-0 ${
                             selectedLens?.id === lens.id
                               ? "border-accent"
                               : "border-white/30"
@@ -295,9 +295,9 @@ export default function ProductDetailPage() {
                             <div className="w-2 h-2 rounded-full bg-accent" />
                           )}
                         </div>
-                        <span className="text-sm">{lens.label}</span>
+                        <span className="text-xs sm:text-sm">{lens.label}</span>
                       </div>
-                      <span className="text-sm text-white/50">
+                      <span className="text-xs sm:text-sm text-white/50 whitespace-nowrap flex-shrink-0">
                         {lens.priceAdd === 0
                           ? "Included"
                           : `+৳${lens.priceAdd.toLocaleString()}`}
