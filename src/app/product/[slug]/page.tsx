@@ -2,7 +2,7 @@
 
 import { useParams } from "next/navigation";
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { getProductBySlug, getSimilarProducts } from "@/lib/products";
@@ -110,14 +110,25 @@ export default function ProductDetailPage() {
             >
               {/* Main Image */}
               <div className="relative aspect-square rounded-2xl overflow-hidden bg-surface mb-4">
-                <Image
-                  src={currentImages[selectedImageIndex]?.url}
-                  alt={currentImages[selectedImageIndex]?.alt}
-                  fill
-                  className="object-cover transition-opacity duration-500"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  priority
-                />
+                <AnimatePresence mode="popLayout">
+                  <motion.div
+                    key={`${selectedColorIndex}-${selectedImageIndex}`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                    className="absolute inset-0"
+                  >
+                    <Image
+                      src={currentImages[selectedImageIndex]?.url}
+                      alt={currentImages[selectedImageIndex]?.alt}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      priority
+                    />
+                  </motion.div>
+                </AnimatePresence>
                 {product.tag && (
                   <div className="absolute top-4 left-4">
                     <span
