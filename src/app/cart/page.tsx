@@ -239,9 +239,12 @@ export default function CartPage() {
                   </div>
 
                   {/* Checkout */}
-                  <button className="w-full py-4 bg-accent text-primary font-semibold text-sm uppercase tracking-wider hover:bg-accent-light transition-colors">
+                  <Link
+                    href="/checkout"
+                    className="block w-full py-4 bg-accent text-primary font-semibold text-sm uppercase tracking-wider hover:bg-accent-light transition-colors text-center"
+                  >
                     Proceed to Checkout
-                  </button>
+                  </Link>
 
                   <a
                     href={`https://wa.me/8801872777452?text=${whatsappMessage}`}
