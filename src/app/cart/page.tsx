@@ -86,12 +86,12 @@ export default function CartPage() {
                   return (
                     <div
                       key={`${item.product.slug}-${item.selectedColor}-${item.selectedLens.id}`}
-                      className="flex gap-5 p-5 bg-surface/50 border border-white/5 rounded-xl"
+                      className="flex gap-3 sm:gap-5 p-3 sm:p-5 bg-surface/50 border border-white/5 rounded-xl"
                     >
                       {/* Image */}
                       <Link
                         href={`/product/${item.product.slug}`}
-                        className="relative w-28 h-28 md:w-36 md:h-36 rounded-lg overflow-hidden bg-surface flex-shrink-0"
+                        className="relative w-20 h-20 sm:w-28 sm:h-28 md:w-36 md:h-36 rounded-lg overflow-hidden bg-surface flex-shrink-0"
                       >
                         <Image
                           src={colorData?.images[0]?.url || item.product.colors[0].images[0].url}
@@ -138,19 +138,19 @@ export default function CartPage() {
                           <div className="flex items-center border border-white/10 rounded">
                             <button
                               onClick={() => updateQuantity(index, item.quantity - 1)}
-                              className="w-9 h-9 flex items-center justify-center text-white/60 hover:text-white transition-colors"
+                              className="w-7 h-7 sm:w-9 sm:h-9 flex items-center justify-center text-white/60 hover:text-white transition-colors text-sm"
                             >
                               -
                             </button>
-                            <span className="w-8 text-center text-sm">{item.quantity}</span>
+                            <span className="w-6 sm:w-8 text-center text-xs sm:text-sm">{item.quantity}</span>
                             <button
                               onClick={() => updateQuantity(index, item.quantity + 1)}
-                              className="w-9 h-9 flex items-center justify-center text-white/60 hover:text-white transition-colors"
+                              className="w-7 h-7 sm:w-9 sm:h-9 flex items-center justify-center text-white/60 hover:text-white transition-colors text-sm"
                             >
                               +
                             </button>
                           </div>
-                          <span className="text-accent font-semibold text-lg">
+                          <span className="text-accent font-semibold text-base sm:text-lg whitespace-nowrap">
                             ৳{(itemPrice * item.quantity).toLocaleString()}
                           </span>
                         </div>
@@ -173,7 +173,7 @@ export default function CartPage() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.1 }}
               >
-                <div className="sticky top-28 bg-surface/50 border border-white/5 rounded-xl p-6 space-y-5">
+                <div className="sticky top-28 bg-surface/50 border border-white/5 rounded-xl p-4 sm:p-6 space-y-5">
                   <h2 className="text-lg font-heading font-bold">Order Summary</h2>
 
                   <div className="space-y-3 text-sm">
@@ -206,7 +206,7 @@ export default function CartPage() {
 
                   <div className="border-t border-white/10 pt-4 flex justify-between items-baseline">
                     <span className="font-medium">Total</span>
-                    <span className="text-2xl font-heading font-bold text-accent">
+                    <span className="text-xl sm:text-2xl font-heading font-bold text-accent">
                       ৳{finalTotal.toLocaleString()}
                     </span>
                   </div>
@@ -219,11 +219,11 @@ export default function CartPage() {
                         placeholder="Promo code"
                         value={promoCode}
                         onChange={(e) => setPromoCode(e.target.value)}
-                        className="flex-1 px-3 py-2.5 bg-white/5 border border-white/10 rounded text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-accent/40"
+                        className="flex-1 min-w-0 px-3 py-2.5 bg-white/5 border border-white/10 rounded text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-accent/40"
                       />
                       <button
                         onClick={handlePromoApply}
-                        className="px-4 py-2.5 text-xs uppercase tracking-wider border border-accent/30 text-accent hover:bg-accent/10 transition-colors rounded"
+                        className="px-3 sm:px-4 py-2.5 text-xs uppercase tracking-wider border border-accent/30 text-accent hover:bg-accent/10 transition-colors rounded flex-shrink-0"
                       >
                         Apply
                       </button>
